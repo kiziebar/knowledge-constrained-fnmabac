@@ -1,0 +1,166 @@
+=== E6 LP baseline vs SITW (cross-edition) ===
+-- rw_next
+n_train                      5              10             20             40
+method                                                                      
+LP                0.904 ± 0.089  0.979 ± 0.021  0.999 ± 0.002  1.000 ± 0.000
+LP + knowledge    0.970 ± 0.021  0.991 ± 0.007  0.999 ± 0.001  1.000 ± 0.000
+SITW              0.932 ± 0.064  0.983 ± 0.021  0.997 ± 0.004  1.000 ± 0.000
+SITW + knowledge  0.985 ± 0.014  0.992 ± 0.006  0.998 ± 0.002  1.000 ± 0.000
+-- rw_next_new
+n_train                      5              10             20             40
+method                                                                      
+LP                0.386 ± 0.352  0.634 ± 0.252  0.926 ± 0.091  0.989 ± 0.015
+LP + knowledge    0.490 ± 0.346  0.705 ± 0.240  0.931 ± 0.086  0.989 ± 0.015
+SITW              0.528 ± 0.302  0.685 ± 0.255  0.907 ± 0.114  0.979 ± 0.036
+SITW + knowledge  0.641 ± 0.284  0.730 ± 0.218  0.910 ± 0.126  0.984 ± 0.023
+-- w_mae
+n_train                      5              10             20             40
+method                                                                      
+LP                0.177 ± 0.057  0.079 ± 0.049  0.016 ± 0.012  0.004 ± 0.002
+LP + knowledge    0.082 ± 0.021  0.050 ± 0.020  0.016 ± 0.011  0.004 ± 0.002
+SITW              0.100 ± 0.046  0.057 ± 0.032  0.020 ± 0.015  0.007 ± 0.005
+SITW + knowledge  0.046 ± 0.018  0.037 ± 0.017  0.019 ± 0.013  0.006 ± 0.003
+n=5: SITW+K vs LP+K p=2.45e-10, median diff=+0.0100
+n=10: SITW+K vs LP+K p=1.45e-01, median diff=+0.0006
+n=20: SITW+K vs LP+K p=4.10e-03, median diff=-0.0002
+n=40: SITW+K vs LP+K p=7.03e-09, median diff=-0.0001
+
+=== E2b non-monotonic: flag vs flag+constraints vs LP ===
+## IO core 75
+-- rw_test
+n_train                                10             20             40
+method                                                                 
+Correct flag                0.949 ± 0.048  0.995 ± 0.006  0.999 ± 0.001
+Correct flag + constraints  0.975 ± 0.041  0.997 ± 0.003  1.000 ± 0.000
+LP                          0.731 ± 0.084  0.707 ± 0.115  0.749 ± 0.052
+LP + knowledge              0.755 ± 0.055  0.735 ± 0.039  0.711 ± 0.047
+-- rw_train
+n_train                                10             20             40
+method                                                                 
+Correct flag                0.999 ± 0.003  1.000 ± 0.001  1.000 ± 0.000
+Correct flag + constraints  1.000 ± 0.001  1.000 ± 0.000  1.000 ± 0.000
+LP                          0.730 ± 0.236  0.674 ± 0.122  0.736 ± 0.102
+LP + knowledge              0.713 ± 0.242  0.661 ± 0.136  0.685 ± 0.116
+-- w_mae
+n_train                                10             20             40
+method                                                                 
+Correct flag                0.069 ± 0.029  0.028 ± 0.014  0.010 ± 0.007
+Correct flag + constraints  0.032 ± 0.017  0.017 ± 0.008  0.008 ± 0.005
+LP                          0.190 ± 0.039  0.188 ± 0.037  0.170 ± 0.030
+LP + knowledge              0.114 ± 0.024  0.100 ± 0.028  0.074 ± 0.019
+-- core_err
+n_train                                 10             20             40
+method                                                                  
+Correct flag                7.534 ± 13.088  1.081 ± 1.250  0.249 ± 0.230
+Correct flag + constraints   3.097 ± 4.055  1.065 ± 0.820  0.272 ± 0.222
+LP                               nan ± nan      nan ± nan      nan ± nan
+LP + knowledge                   nan ± nan      nan ± nan      nan ± nan
+n=10: flag+constraints vs flag p=2.56e-04
+n=20: flag+constraints vs flag p=1.84e-01
+n=40: flag+constraints vs flag p=7.46e-01
+## T core 70
+-- rw_test
+n_train                                10             20             40
+method                                                                 
+Correct flag                0.928 ± 0.067  0.984 ± 0.025  0.999 ± 0.002
+Correct flag + constraints  0.941 ± 0.066  0.987 ± 0.019  0.999 ± 0.001
+LP                          0.499 ± 0.145  0.452 ± 0.126  0.430 ± 0.086
+LP + knowledge              0.697 ± 0.021  0.701 ± 0.017  0.699 ± 0.012
+-- rw_train
+n_train                                10             20             40
+method                                                                 
+Correct flag                0.999 ± 0.003  0.999 ± 0.001  1.000 ± 0.000
+Correct flag + constraints  0.999 ± 0.003  0.999 ± 0.002  1.000 ± 0.000
+LP                          0.616 ± 0.330  0.531 ± 0.249  0.507 ± 0.192
+LP + knowledge              0.721 ± 0.207  0.731 ± 0.156  0.762 ± 0.089
+-- w_mae
+n_train                                10             20             40
+method                                                                 
+Correct flag                0.055 ± 0.039  0.025 ± 0.016  0.005 ± 0.004
+Correct flag + constraints  0.037 ± 0.017  0.019 ± 0.011  0.006 ± 0.006
+LP                          0.200 ± 0.072  0.213 ± 0.078  0.217 ± 0.040
+LP + knowledge              0.080 ± 0.031  0.080 ± 0.029  0.076 ± 0.018
+-- core_err
+n_train                                10             20             40
+method                                                                 
+Correct flag                5.917 ± 6.204  2.477 ± 4.058  0.553 ± 0.907
+Correct flag + constraints  6.176 ± 6.111  1.882 ± 2.602  0.409 ± 0.423
+LP                              nan ± nan      nan ± nan      nan ± nan
+LP + knowledge                  nan ± nan      nan ± nan      nan ± nan
+n=10: flag+constraints vs flag p=1.91e-01
+n=20: flag+constraints vs flag p=9.19e-01
+n=40: flag+constraints vs flag p=6.41e-01
+
+=== E3b fuzzy estimates (non-monotonic) ===
+                                      width  covered  abs_err_median
+scenario   ptype  knowledge n_train                                 
+IO core 75 core   correct   10        8.358     0.80           1.936
+                            20        3.180     0.80           0.643
+                            40        1.210     1.00           0.200
+                  none      10        8.682     0.80           2.019
+                            20        7.177     1.00           0.808
+                            40        1.132     1.00           0.251
+           weight correct   10        0.100     1.00           0.014
+                            20        0.066     0.96           0.013
+                            40        0.037     0.88           0.006
+                  none      10        0.243     0.92           0.039
+                            20        0.125     1.00           0.013
+                            40        0.035     1.00           0.005
+T core 70  core   correct   10       20.654     1.00           5.088
+                            20        9.344     0.80           2.239
+                            40        1.369     1.00           0.280
+                  none      10       20.671     1.00           3.559
+                            20        9.944     0.80           2.382
+                            40        1.061     1.00           0.155
+           weight correct   10        0.110     1.00           0.022
+                            20        0.060     0.96           0.011
+                            40        0.022     1.00           0.002
+                  none      10        0.189     0.96           0.041
+                            20        0.096     0.88           0.016
+                            40        0.014     1.00           0.002
+
+=== E7 partial / vague / mixed knowledge ===
+-- rw_next
+n_train                            5              10
+knowledge                                           
+SITW                    0.932 ± 0.064  0.983 ± 0.021
+ind_only                0.956 ± 0.044  0.987 ± 0.011
+ordinal_only            0.977 ± 0.018  0.990 ± 0.008
+vague                   0.976 ± 0.019  0.991 ± 0.008
+SITW + knowledge        0.985 ± 0.014  0.992 ± 0.006
+mixed                   0.957 ± 0.016  0.960 ± 0.014
+SITW + wrong knowledge  0.874 ± 0.081  0.909 ± 0.036
+-- rw_train
+n_train                            5              10
+knowledge                                           
+SITW                    0.998 ± 0.014  1.000 ± 0.002
+ind_only                0.999 ± 0.004  0.999 ± 0.002
+ordinal_only            0.999 ± 0.004  0.999 ± 0.002
+vague                   0.999 ± 0.004  1.000 ± 0.001
+SITW + knowledge        0.999 ± 0.004  1.000 ± 0.001
+mixed                   0.994 ± 0.018  0.979 ± 0.025
+SITW + wrong knowledge  0.984 ± 0.036  0.957 ± 0.046
+-- w_mae
+n_train                            5              10
+knowledge                                           
+SITW                    0.100 ± 0.046  0.057 ± 0.032
+ind_only                0.082 ± 0.029  0.051 ± 0.030
+ordinal_only            0.063 ± 0.030  0.047 ± 0.024
+vague                   0.063 ± 0.032  0.045 ± 0.023
+SITW + knowledge        0.046 ± 0.018  0.037 ± 0.017
+mixed                   0.111 ± 0.030  0.110 ± 0.031
+SITW + wrong knowledge  0.167 ± 0.040  0.151 ± 0.038
+
+=== TIME ===
+    n_train           params  secs_mean  secs_sd
+0         5          weights      0.822    0.024
+1         5   weights+1 core      0.821    0.011
+2         5  weights+5 cores      0.921    0.046
+3         5   LP + knowledge      0.002      NaN
+4        40          weights      0.916    0.021
+5        40   weights+1 core      0.914    0.014
+6        40  weights+5 cores      0.906    0.030
+7        40   LP + knowledge      0.013      NaN
+8       200          weights      0.979    0.037
+9       200   weights+1 core      0.993    0.028
+10      200  weights+5 cores      0.991    0.022

@@ -1,0 +1,95 @@
+
+-- rw_test
+n_train                                    10             15             20
+method                                                                     
+Gini (FN-MABAC)                 0.904 ± 0.036  0.898 ± 0.047  0.910 ± 0.070
+STFN-MABAC (Gini w, all cores)  0.645 ± 0.216  0.660 ± 0.221  0.718 ± 0.281
+LP + knowledge                  0.923 ± 0.054  0.944 ± 0.036  0.935 ± 0.048
+SITW                            0.909 ± 0.050  0.925 ± 0.055  0.940 ± 0.058
+SITW + knowledge                0.910 ± 0.058  0.945 ± 0.041  0.935 ± 0.064
+SITW + wrong knowledge          0.721 ± 0.132  0.778 ± 0.146  0.805 ± 0.139
+Flag C3                         0.910 ± 0.060  0.954 ± 0.034  0.967 ± 0.026
+Flag C3 + knowledge             0.937 ± 0.036  0.958 ± 0.038  0.959 ± 0.044
+Wrong flag C4 + knowledge       0.900 ± 0.040  0.897 ± 0.046  0.916 ± 0.085
+All cores + weights             0.599 ± 0.209  0.586 ± 0.204  0.594 ± 0.251
+
+-- rw_train
+n_train                                    10             15             20
+method                                                                     
+Gini (FN-MABAC)                 0.909 ± 0.075  0.915 ± 0.037  0.900 ± 0.036
+STFN-MABAC (Gini w, all cores)  0.820 ± 0.225  0.869 ± 0.157  0.847 ± 0.121
+LP + knowledge                  0.970 ± 0.038  0.962 ± 0.025  0.953 ± 0.018
+SITW                            0.984 ± 0.021  0.983 ± 0.012  0.979 ± 0.011
+SITW + knowledge                0.978 ± 0.028  0.980 ± 0.014  0.977 ± 0.012
+SITW + wrong knowledge          0.964 ± 0.027  0.939 ± 0.021  0.915 ± 0.028
+Flag C3                         0.993 ± 0.015  0.992 ± 0.007  0.990 ± 0.005
+Flag C3 + knowledge             0.992 ± 0.011  0.992 ± 0.008  0.990 ± 0.004
+Wrong flag C4 + knowledge       0.983 ± 0.022  0.978 ± 0.018  0.973 ± 0.013
+All cores + weights             0.908 ± 0.149  0.939 ± 0.087  0.908 ± 0.088
+
+-- core_C3
+n_train                                       10                15                20
+method                                                                              
+Gini (FN-MABAC)                  384.000 ± 0.000   384.000 ± 0.000   384.000 ± 0.000
+STFN-MABAC (Gini w, all cores)  215.358 ± 71.079  185.580 ± 55.861  183.016 ± 32.813
+LP + knowledge                   384.000 ± 0.000   384.000 ± 0.000   384.000 ± 0.000
+SITW                             384.000 ± 0.000   384.000 ± 0.000   384.000 ± 0.000
+SITW + knowledge                 384.000 ± 0.000   384.000 ± 0.000   384.000 ± 0.000
+SITW + wrong knowledge           384.000 ± 0.000   384.000 ± 0.000   384.000 ± 0.000
+Flag C3                         210.457 ± 86.135  175.388 ± 72.063  148.443 ± 40.401
+Flag C3 + knowledge             190.685 ± 76.191  151.416 ± 55.752  168.328 ± 44.713
+Wrong flag C4 + knowledge        384.000 ± 0.000   384.000 ± 0.000   384.000 ± 0.000
+All cores + weights             218.728 ± 87.190  191.127 ± 59.884  213.283 ± 75.526
+n=10: Flag C3 + knowledge vs SITW + knowledge: p=7.0e-03, mean diff=+0.027
+n=10: Flag C3 + knowledge vs Flag C3: p=1.9e-02, mean diff=+0.027
+n=10: Flag C3 + knowledge vs All cores + weights: p=4.7e-08, mean diff=+0.338
+n=10: Flag C3 + knowledge vs Gini (FN-MABAC): p=9.9e-05, mean diff=+0.033
+n=10: Flag C3 + knowledge vs STFN-MABAC (Gini w, all cores): p=1.3e-07, mean diff=+0.292
+n=10: SITW + knowledge vs SITW: p=9.2e-01, mean diff=+0.001
+n=15: Flag C3 + knowledge vs SITW + knowledge: p=3.8e-02, mean diff=+0.013
+n=15: Flag C3 + knowledge vs Flag C3: p=2.5e-01, mean diff=+0.004
+n=15: Flag C3 + knowledge vs All cores + weights: p=1.9e-09, mean diff=+0.371
+n=15: Flag C3 + knowledge vs Gini (FN-MABAC): p=3.7e-09, mean diff=+0.060
+n=15: Flag C3 + knowledge vs STFN-MABAC (Gini w, all cores): p=1.9e-08, mean diff=+0.298
+n=15: SITW + knowledge vs SITW: p=1.3e-03, mean diff=+0.020
+n=20: Flag C3 + knowledge vs SITW + knowledge: p=2.8e-02, mean diff=+0.024
+n=20: Flag C3 + knowledge vs Flag C3: p=3.7e-01, mean diff=-0.007
+n=20: Flag C3 + knowledge vs All cores + weights: p=4.7e-06, mean diff=+0.366
+n=20: Flag C3 + knowledge vs Gini (FN-MABAC): p=1.1e-04, mean diff=+0.049
+n=20: Flag C3 + knowledge vs STFN-MABAC (Gini w, all cores): p=1.4e-04, mean diff=+0.241
+n=20: SITW + knowledge vs SITW: p=5.7e-01, mean diff=-0.005
+
+-- full data (30 cards), 15 seeds: train rw and fuzzy C3 core / key weights
+                                     rw_train C3 core (min,med,max)     w_C1 (min,med,max)     w_C6 (min,med,max)
+method                                                                                                           
+STFN-MABAC (Gini w, all cores)  0.828 ± 0.006       (190, 195, 319)  (0.180, 0.180, 0.180)  (0.198, 0.198, 0.198)
+SITW                            0.980 ± 0.002       (384, 384, 384)  (0.000, 0.004, 0.048)  (0.255, 0.314, 0.383)
+SITW + knowledge                0.980 ± 0.001       (384, 384, 384)  (0.000, 0.005, 0.038)  (0.230, 0.290, 0.353)
+SITW + wrong knowledge          0.919 ± 0.007       (384, 384, 384)  (0.284, 0.300, 0.302)  (0.001, 0.017, 0.044)
+Flag C3                         0.992 ± 0.002        (68, 145, 207)  (0.000, 0.003, 0.017)  (0.135, 0.251, 0.332)
+Flag C3 + knowledge             0.991 ± 0.002        (80, 146, 195)  (0.000, 0.002, 0.033)  (0.131, 0.243, 0.347)
+Wrong flag C4 + knowledge       0.976 ± 0.001       (384, 384, 384)  (0.000, 0.010, 0.027)  (0.084, 0.284, 0.358)
+All cores + weights             0.879 ± 0.012       (117, 252, 374)  (0.001, 0.077, 0.188)  (0.023, 0.169, 0.304)
+
+median weights per method:
+                                 w_C1   w_C2   w_C3   w_C4   w_C5   w_C6   w_C7   w_C8
+method                                                                                
+All cores + weights             0.077  0.242  0.034  0.146  0.012  0.169  0.006  0.257
+Flag C3                         0.003  0.173  0.197  0.010  0.004  0.251  0.222  0.160
+Flag C3 + knowledge             0.002  0.139  0.193  0.088  0.001  0.243  0.206  0.160
+SITW                            0.004  0.258  0.014  0.145  0.003  0.314  0.156  0.080
+SITW + knowledge                0.005  0.267  0.012  0.132  0.002  0.290  0.215  0.054
+SITW + wrong knowledge          0.300  0.213  0.001  0.055  0.000  0.017  0.249  0.167
+STFN-MABAC (Gini w, all cores)  0.180  0.156  0.092  0.045  0.036  0.198  0.158  0.136
+Wrong flag C4 + knowledge       0.010  0.335  0.003  0.073  0.003  0.284  0.211  0.095
+
+weight TFN widths (mean over criteria):
+method
+All cores + weights               0.187
+Flag C3                           0.129
+Flag C3 + knowledge               0.109
+SITW                              0.130
+SITW + knowledge                  0.088
+SITW + wrong knowledge            0.087
+STFN-MABAC (Gini w, all cores)    0.000
+Wrong flag C4 + knowledge         0.135

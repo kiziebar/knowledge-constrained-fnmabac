@@ -1,0 +1,112 @@
+== knowledge only (THE), mean over pairs
+              rw_next  rw_next_new   w_mae
+knowledge                                 
+correct        0.9975       0.8558  0.0124
+ind_only       0.9384       0.3848  0.0661
+ordinal_only   0.9994       0.9569  0.0062
+vague          0.9985       0.9161  0.0106
+      pair  rw_next  rw_next_new
+2023->2024   0.9982       0.7444
+2024->2025   0.9976       0.8351
+2025->2026   0.9973       0.9074
+2026->2027   0.9970       0.9362
+== knowledge only (GPU)
+          mean    std
+n_train              
+10.0     0.906  0.041
+15.0     0.899  0.051
+20.0     0.905  0.081
+== E1 median deployment (n_tasks per n): {5: 258, 10: 242, 20: 220, 40: 216}
+rw_next
+                 mean  ...                             std
+method  SITW (median)  ... SITW + wrong knowledge (median)
+n_train                ...                                
+5               0.954  ...                           0.082
+10              0.991  ...                           0.051
+20              0.999  ...                             NaN
+40              1.000  ...                             NaN
+
+[4 rows x 6 columns]
+rw_next_new
+                 mean  ...                             std
+method  SITW (median)  ... SITW + wrong knowledge (median)
+n_train                ...                                
+5               0.560  ...                           0.226
+10              0.758  ...                           0.202
+20              0.946  ...                             NaN
+40              0.988  ...                             NaN
+
+[4 rows x 6 columns]
+w_mae
+                 mean  ...                             std
+method  SITW (median)  ... SITW + wrong knowledge (median)
+n_train                ...                                
+5               0.075  ...                           0.046
+10              0.037  ...                           0.031
+20              0.012  ...                             NaN
+40              0.004  ...                             NaN
+
+[4 rows x 6 columns]
+rw_train
+                 mean  ...                             std
+method  SITW (median)  ... SITW + wrong knowledge (median)
+n_train                ...                                
+5               0.999  ...                           0.153
+10              0.999  ...                           0.055
+20              1.000  ...                             NaN
+40              1.000  ...                             NaN
+
+[4 rows x 6 columns]
+per pair rw_next
+pair                                     2023->2024  ...  2026->2027
+method                          n_train              ...            
+SITW (median)                   5             0.948  ...       0.953
+                                10            0.995  ...       0.989
+                                20            0.999  ...       0.999
+                                40            1.000  ...       1.000
+SITW + knowledge (median)       5             0.991  ...       0.992
+                                10            0.997  ...       0.996
+                                20            0.999  ...       0.999
+                                40            1.000  ...       1.000
+SITW + wrong knowledge (median) 5             0.853  ...         NaN
+                                10            0.916  ...         NaN
+
+[10 rows x 4 columns]
+n=5 median+K 0.9907 vs kn-only 0.9975 p=4.4e-14 share>=0.23
+n=10 median+K 0.9965 vs kn-only 0.9975 p=0.023 share>=0.48
+n=20 median+K 0.9991 vs kn-only 0.9975 p=4.5e-19 share>=0.96
+n=40 median+K 0.9998 vs kn-only 0.9975 p=1.9e-19 share>=1.00
+n=5: single 0.9843 median 0.9907 p=1.4e-05; median K vs median none p=5.4e-20
+n=10: single 0.9919 median 0.9965 p=2.3e-12; median K vs median none p=6.6e-09
+n=20: single 0.9981 median 0.9991 p=4.2e-10; median K vs median none p=0.21
+n=40: single 0.9997 median 0.9998 p=8e-08; median K vs median none p=0.39
+['pair', 'n_train', 'rep', 'method', 'rw_train', 'rw_next', 'rw_next_new', 'w_mae']
+== GPU median deployment
+n_train                               10     15     20
+     method                                           
+mean Flag C3 (median)              0.925  0.964  0.969
+     Flag C3 + knowledge (median)  0.940  0.965  0.972
+     SITW (median)                 0.909  0.937  0.948
+     SITW + knowledge (median)     0.917  0.945  0.942
+std  Flag C3 (median)              0.038  0.026  0.025
+     Flag C3 + knowledge (median)  0.036  0.026  0.023
+     SITW (median)                 0.052  0.041  0.044
+     SITW + knowledge (median)     0.046  0.037  0.054
+n_train                          10     15     20
+method                                           
+Flag C3 (median)              0.992  0.989  0.987
+Flag C3 + knowledge (median)  0.992  0.989  0.988
+SITW (median)                 0.981  0.981  0.977
+SITW + knowledge (median)     0.977  0.977  0.975
+SITW (median) 10 0.909 vs kn-only 0.906 p=0.23
+SITW (median) 15 0.937 vs kn-only 0.899 p=6.3e-05
+SITW (median) 20 0.948 vs kn-only 0.905 p=7.8e-05
+SITW + knowledge (median) 10 0.917 vs kn-only 0.906 p=0.0098
+SITW + knowledge (median) 15 0.945 vs kn-only 0.899 p=3.8e-05
+SITW + knowledge (median) 20 0.942 vs kn-only 0.905 p=0.00016
+Flag C3 (median) 10 0.925 vs kn-only 0.906 p=0.033
+Flag C3 (median) 15 0.964 vs kn-only 0.899 p=9.3e-09
+Flag C3 (median) 20 0.969 vs kn-only 0.905 p=2.4e-05
+Flag C3 + knowledge (median) 10 0.94 vs kn-only 0.906 p=0.00034
+Flag C3 + knowledge (median) 15 0.965 vs kn-only 0.899 p=1.9e-09
+Flag C3 + knowledge (median) 20 0.972 vs kn-only 0.905 p=1.1e-05
